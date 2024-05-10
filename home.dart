@@ -83,16 +83,121 @@ class Home extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Container(
-                              padding: const EdgeInsets.all(16),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Colors.green,
-                              ),
-                              child: const Center(
-                                child: Icon(
-                                  Icons.add,
-                                  color: Colors.white,
+                            GestureDetector(
+                              onTap: () {
+                                showModalBottomSheet(
+                                    context: context,
+                                    shape: const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(20),
+                                            topRight: Radius.circular(20))),
+                                    builder: (context) {
+                                      return SingleChildScrollView(
+                                        child: Container(
+                                          padding: const EdgeInsets.all(20),
+                                          height: 600,
+                                          decoration: const BoxDecoration(),
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              const Text(
+                                                "Countries",
+                                                style: TextStyle(
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.w800),
+                                              ),
+                                              const SizedBox(
+                                                height: 10,
+                                              ),
+                                              Container(
+                                                decoration: BoxDecoration(
+                                                    color: color
+                                                        .AppColor.lightgray,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10)),
+                                                child: const TextField(
+                                                  style: TextStyle(
+                                                    fontSize: 14,
+                                                  ),
+                                                  decoration: InputDecoration(
+                                                    prefixIcon: Icon(
+                                                      Icons.search,
+                                                      color: Colors.grey,
+                                                      size: 20,
+                                                    ),
+                                                    hintText: 'Search',
+                                                    contentPadding:
+                                                        EdgeInsets.symmetric(
+                                                            vertical: 15),
+                                                    labelStyle: TextStyle(
+                                                        fontSize: 14,
+                                                        color: Colors.grey),
+                                                    border: InputBorder.none,
+                                                  ),
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                height: 40,
+                                              ),
+                                              const Text("Pick a number",
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                    fontWeight: FontWeight.w600,
+                                                    color: Colors.black,
+                                                  )),
+                                              const SizedBox(
+                                                height: 40,
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Container(
+                                                    width: 20,
+                                                    height: 20,
+                                                    child: Image.asset(
+                                                        'lib/images/canada.png'),
+                                                  ),
+                                                  const SizedBox(
+                                                    width: 10,
+                                                  ),
+                                                  const Text("Canada")
+                                                ],
+                                              ),
+                                              const SizedBox(
+                                                height: 20,
+                                              ),
+                                              Container(
+                                                width: double.infinity,
+                                                height: 150,
+                                                decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(20),
+                                                  color:
+                                                      color.AppColor.lightgray,
+                                                ),
+                                                child: Column(
+                                                  children: [Row()],
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      );
+                                    });
+                              },
+                              child: Container(
+                                padding: const EdgeInsets.all(16),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.green,
+                                ),
+                                child: const Center(
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ),
                             )

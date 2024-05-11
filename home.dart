@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geet/selectnumber.dart';
 
 import 'colors.dart' as color;
 
@@ -86,106 +87,15 @@ class Home extends StatelessWidget {
                             GestureDetector(
                               onTap: () {
                                 showModalBottomSheet(
-                                    context: context,
-                                    shape: const RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.only(
-                                            topLeft: Radius.circular(20),
-                                            topRight: Radius.circular(20))),
-                                    builder: (context) {
-                                      return SingleChildScrollView(
-                                        child: Container(
-                                          padding: const EdgeInsets.all(20),
-                                          height: 600,
-                                          decoration: const BoxDecoration(),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              const Text(
-                                                "Countries",
-                                                style: TextStyle(
-                                                    fontSize: 20,
-                                                    fontWeight:
-                                                        FontWeight.w800),
-                                              ),
-                                              const SizedBox(
-                                                height: 10,
-                                              ),
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                    color: color
-                                                        .AppColor.lightgray,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            10)),
-                                                child: const TextField(
-                                                  style: TextStyle(
-                                                    fontSize: 14,
-                                                  ),
-                                                  decoration: InputDecoration(
-                                                    prefixIcon: Icon(
-                                                      Icons.search,
-                                                      color: Colors.grey,
-                                                      size: 20,
-                                                    ),
-                                                    hintText: 'Search',
-                                                    contentPadding:
-                                                        EdgeInsets.symmetric(
-                                                            vertical: 15),
-                                                    labelStyle: TextStyle(
-                                                        fontSize: 14,
-                                                        color: Colors.grey),
-                                                    border: InputBorder.none,
-                                                  ),
-                                                ),
-                                              ),
-                                              const SizedBox(
-                                                height: 40,
-                                              ),
-                                              const Text("Pick a number",
-                                                  style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w600,
-                                                    color: Colors.black,
-                                                  )),
-                                              const SizedBox(
-                                                height: 40,
-                                              ),
-                                              Row(
-                                                children: [
-                                                  Container(
-                                                    width: 20,
-                                                    height: 20,
-                                                    child: Image.asset(
-                                                        'lib/images/canada.png'),
-                                                  ),
-                                                  const SizedBox(
-                                                    width: 10,
-                                                  ),
-                                                  const Text("Canada")
-                                                ],
-                                              ),
-                                              const SizedBox(
-                                                height: 20,
-                                              ),
-                                              Container(
-                                                width: double.infinity,
-                                                height: 150,
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(20),
-                                                  color:
-                                                      color.AppColor.lightgray,
-                                                ),
-                                                child: Column(
-                                                  children: [Row()],
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      );
-                                    });
+                                  backgroundColor: Colors.transparent,
+                                  isScrollControlled: true,
+                                  shape: const RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.vertical(
+                                    top: Radius.circular(20),
+                                  )),
+                                  context: context,
+                                  builder: (context) => buildSheet(context),
+                                );
                               },
                               child: Container(
                                 padding: const EdgeInsets.all(16),
@@ -217,4 +127,403 @@ class Home extends StatelessWidget {
       ),
     );
   }
+
+  Widget buildSheet(BuildContext context) => DraggableScrollableSheet(
+      initialChildSize: 0.9,
+      builder: (_, controller) => ListView(
+            controller: controller,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(20),
+                decoration: const BoxDecoration(
+                    color: Colors.white,
+                    borderRadius:
+                        BorderRadius.vertical(top: Radius.circular(20))),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 3,
+                          width: 40,
+                          decoration: BoxDecoration(
+                              color: Color.fromARGB(255, 228, 228, 228),
+                              borderRadius: BorderRadius.circular(10)),
+                        )
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const Text(
+                      "Countries",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: color.AppColor.lightgray,
+                          borderRadius: BorderRadius.circular(10)),
+                      child: const TextField(
+                        style: TextStyle(
+                          fontSize: 14,
+                        ),
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.search,
+                            color: Colors.grey,
+                            size: 20,
+                          ),
+                          hintText: 'Search',
+                          contentPadding: EdgeInsets.symmetric(vertical: 15),
+                          labelStyle:
+                              TextStyle(fontSize: 14, color: Colors.grey),
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    const Text("Pick a number",
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black,
+                        )),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: 20,
+                          height: 20,
+                          child: Image.asset('lib/images/canada.png'),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        const Text("Canada")
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+
+                    //COUNTRY CONTAINER STARTS HERE
+                    Container(
+                      padding: const EdgeInsets.all(20),
+                      width: double.infinity,
+                      height: 160,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: color.AppColor.lightgray,
+                      ),
+                      child: Column(
+                        children: [
+                          GestureDetector(
+                            onTap: () => {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const Selectnumber()))
+                            },
+                            child: Row(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(4),
+                                  decoration: BoxDecoration(
+                                      color: Colors.white,
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: const Icon(
+                                    Icons.phone_iphone_outlined,
+                                    size: 18,
+                                    color: Color.fromARGB(255, 224, 224, 224),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text(
+                                      "+2348026532069",
+                                      style: TextStyle(fontSize: 12),
+                                    ),
+                                    Text(
+                                      "Lagos Nigeria",
+                                      style: TextStyle(
+                                          fontSize: 10, color: Colors.grey),
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            color: color.AppColor.greyish,
+                            child: const SizedBox(
+                              width: double.infinity,
+                              height: 1,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(4),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: const Icon(
+                                  Icons.phone_iphone_outlined,
+                                  size: 18,
+                                  color: Color.fromARGB(255, 224, 224, 224),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text(
+                                    "+2348026532069",
+                                    style: TextStyle(fontSize: 12),
+                                  ),
+                                  Text(
+                                    "Lagos Nigeria",
+                                    style: TextStyle(
+                                        fontSize: 10, color: Colors.grey),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            color: color.AppColor.greyish,
+                            child: const SizedBox(
+                              width: double.infinity,
+                              height: 1,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(4),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: const Icon(
+                                  Icons.phone_iphone_outlined,
+                                  size: 18,
+                                  color: Color.fromARGB(255, 224, 224, 224),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text(
+                                    "+2348026532069",
+                                    style: TextStyle(fontSize: 12),
+                                  ),
+                                  Text(
+                                    "Lagos Nigeria",
+                                    style: TextStyle(
+                                        fontSize: 10, color: Colors.grey),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    //ENTER A NEW COUNTRY HERE
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          width: 20,
+                          height: 20,
+                          child: Image.asset('lib/images/germany.png'),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        const Text("Germany")
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(20),
+                      width: double.infinity,
+                      height: 160,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: color.AppColor.lightgray,
+                      ),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(4),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: const Icon(
+                                  Icons.phone_iphone_outlined,
+                                  size: 18,
+                                  color: Color.fromARGB(255, 224, 224, 224),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text(
+                                    "+2348026532069",
+                                    style: TextStyle(fontSize: 12),
+                                  ),
+                                  Text(
+                                    "Lagos Nigeria",
+                                    style: TextStyle(
+                                        fontSize: 10, color: Colors.grey),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            color: color.AppColor.greyish,
+                            child: const SizedBox(
+                              width: double.infinity,
+                              height: 1,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(4),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: const Icon(
+                                  Icons.phone_iphone_outlined,
+                                  size: 18,
+                                  color: Color.fromARGB(255, 224, 224, 224),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text(
+                                    "+2348026532069",
+                                    style: TextStyle(fontSize: 12),
+                                  ),
+                                  Text(
+                                    "Lagos Nigeria",
+                                    style: TextStyle(
+                                        fontSize: 10, color: Colors.grey),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Container(
+                            color: color.AppColor.greyish,
+                            child: const SizedBox(
+                              width: double.infinity,
+                              height: 1,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(4),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: const Icon(
+                                  Icons.phone_iphone_outlined,
+                                  size: 18,
+                                  color: Color.fromARGB(255, 224, 224, 224),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: const [
+                                  Text(
+                                    "+2348026532069",
+                                    style: TextStyle(fontSize: 12),
+                                  ),
+                                  Text(
+                                    "Lagos Nigeria",
+                                    style: TextStyle(
+                                        fontSize: 10, color: Colors.grey),
+                                  )
+                                ],
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    const SizedBox(
+                      height: 50,
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ));
 }

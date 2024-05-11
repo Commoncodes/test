@@ -266,8 +266,225 @@ class _AccountState extends State<Account> {
                                               fontWeight: FontWeight.w300),
                                         ),
                                       ],
-                                    )
+                                    ),
                                   ],
+                                ),
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  showModalBottomSheet(
+                                      context: context,
+                                      shape: const RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(20),
+                                              topRight: Radius.circular(20))),
+                                      builder: (context) {
+                                        return SingleChildScrollView(
+                                          child: Container(
+                                            padding: const EdgeInsets.all(20),
+                                            height: 600,
+                                            decoration: const BoxDecoration(),
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                const Text(
+                                                  "Countries",
+                                                  style: TextStyle(
+                                                      fontSize: 20,
+                                                      fontWeight:
+                                                          FontWeight.w800),
+                                                ),
+                                                const SizedBox(
+                                                  height: 10,
+                                                ),
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                      color: color
+                                                          .AppColor.lightgray,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10)),
+                                                  child: const TextField(
+                                                    style: TextStyle(
+                                                      fontSize: 14,
+                                                    ),
+                                                    decoration: InputDecoration(
+                                                      prefixIcon: Icon(
+                                                        Icons.search,
+                                                        color: Colors.grey,
+                                                        size: 20,
+                                                      ),
+                                                      hintText: 'Search',
+                                                      contentPadding:
+                                                          EdgeInsets.symmetric(
+                                                              vertical: 15),
+                                                      labelStyle: TextStyle(
+                                                          fontSize: 14,
+                                                          color: Colors.grey),
+                                                      border: InputBorder.none,
+                                                    ),
+                                                  ),
+                                                ),
+                                                const SizedBox(
+                                                  height: 40,
+                                                ),
+                                                const Text("Choose country",
+                                                    style: TextStyle(
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.w600,
+                                                      color: Colors.black,
+                                                    )),
+                                                const SizedBox(
+                                                  height: 40,
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Container(
+                                                      width: 20,
+                                                      height: 20,
+                                                      child: Image.asset(
+                                                          'lib/images/canada.png'),
+                                                    ),
+                                                    const SizedBox(
+                                                      width: 10,
+                                                    ),
+                                                    const Text(
+                                                      "Canada",
+                                                      style: TextStyle(
+                                                        fontSize: 14,
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                                const SizedBox(
+                                                  height: 40,
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Container(
+                                                      width: 20,
+                                                      height: 20,
+                                                      child: Image.asset(
+                                                          'lib/images/canada.png'),
+                                                    ),
+                                                    const SizedBox(
+                                                      width: 10,
+                                                    ),
+                                                    const Text(
+                                                      "America",
+                                                      style: TextStyle(
+                                                          fontSize: 14),
+                                                    )
+                                                  ],
+                                                ),
+                                                const SizedBox(
+                                                  height: 40,
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Container(
+                                                      width: 20,
+                                                      height: 20,
+                                                      child: Image.asset(
+                                                          'lib/images/canada.png'),
+                                                    ),
+                                                    const SizedBox(
+                                                      width: 10,
+                                                    ),
+                                                    const Text(
+                                                      "Germany",
+                                                      style: TextStyle(
+                                                          fontSize: 14),
+                                                    )
+                                                  ],
+                                                ),
+                                                const SizedBox(
+                                                  height: 40,
+                                                ),
+                                                Row(
+                                                  children: [
+                                                    Container(
+                                                      width: 20,
+                                                      height: 20,
+                                                      child: Image.asset(
+                                                          'lib/images/canada.png'),
+                                                    ),
+                                                    const SizedBox(
+                                                      width: 10,
+                                                    ),
+                                                    const Text(
+                                                      "south africa",
+                                                      style: TextStyle(
+                                                        fontSize: 14,
+                                                      ),
+                                                    )
+                                                  ],
+                                                ),
+                                                const SizedBox(
+                                                  height: 20,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      });
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.all(20),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: color.AppColor.lightgray,
+                                  ),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        padding: const EdgeInsets.all(8),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: color.AppColor.lightgreen,
+                                        ),
+                                        child: const Center(
+                                          child: Icon(
+                                            Icons.settings,
+                                            color: Colors.green,
+                                            size: 14,
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 20,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: const [
+                                          Text(
+                                            "Change country",
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.w500),
+                                          ),
+                                          SizedBox(
+                                            height: 5,
+                                          ),
+                                          Text(
+                                            "Choose a new country",
+                                            style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.grey,
+                                                fontWeight: FontWeight.w300),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],
